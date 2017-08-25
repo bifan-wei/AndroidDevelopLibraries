@@ -1,12 +1,15 @@
-package com.lancoo.utils;
+package com.hw.libraries.utils;
 
 import android.util.Xml;
 
-import com.lancoo.logger.ExceptionLoger;
+
+import com.hw.libraries.logger.ExceptionLoger;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 import org.xmlpull.v1.XmlSerializer;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
@@ -192,7 +195,7 @@ public class XmlUtil {
 	}
 
 	/**
-	 * @param xmlStrxml字符串
+	 * @param xmlStr 字符串
 	 * @param objecttype 对应的数据结构体
 	 * @return objecttype传入错误或导致IllegalAccessException，
 	 *         objecttype与xmlStr的属性不对应会返回new出来的objecttype
@@ -266,7 +269,7 @@ public class XmlUtil {
 
 	/**
 	 * @param xmlStr 多个xml结构体字符串         
-	 * @param objecttype单个结构体类型
+	 * @param objecttype 单个结构体类型
 	 * @param starttag 单个xml结构体的开始与结束节点名称
 	 * @return 不会返回null，解析出错可能返回无数据
 	 *  -------------------- 

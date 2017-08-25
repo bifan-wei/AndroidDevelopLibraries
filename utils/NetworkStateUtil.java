@@ -1,4 +1,4 @@
-package com.lancoo.utils;
+package com.hw.libraries.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

@@ -1,4 +1,4 @@
-package com.lancoo.logger;
+package com.hw.libraries.logger;
 
 public class ExceptionBean {
 	public String Tag;
