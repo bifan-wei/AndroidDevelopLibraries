@@ -1,14 +1,12 @@
 package com.lancoo.logger;
 
+import com.lancoo.utils.FileUtil;
+import com.lancoo.utils.TimeUtil;
+import com.lancoo.utils.XmlUtil;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.lancoo.hw.appbase.HwConstant;
-import com.lancoo.hw.beans.ExceptionBean;
-import com.lancoo.hw.utils.FileUtil;
-import com.lancoo.hw.utils.TimeUtil;
-import com.lancoo.hw.utils.XmlUtil;
 
 /**
  *TODO
@@ -18,17 +16,12 @@ import com.lancoo.hw.utils.XmlUtil;
  */
 public class ExceptionLoger {
 
-	public static final String savefilepath = HwConstant.SystemFilePathroot + "/526b14";
+	public static final String savefilepath = LoggerSettings.ExceptionLogerFileSavePath;
 	public static final String starttag = "exception";
 	public static final String tag = "ExceptionLoger";
 	public static final int FileMaxSize = 100*1024*1; //限制不超过100K
-	private  static final Boolean isLog = true;//是否运行记录
-
-	static {
-		if (isLog&&!FileUtil.isFileExist(savefilepath)) {
-			FileUtil.CreateFile(savefilepath);
-		}
-	}
+	private  static final Boolean isLog = LoggerSettings.isPermitExceptionLog;//是否运行记录
+	
 
 	/**
 	 *@return  返回的是字节数
@@ -114,7 +107,7 @@ public class ExceptionLoger {
 	public static List<ExceptionBean> getExceptions() {
 		if(isLog){
 		String exceptionstr = FileUtil.ReadFromFile(savefilepath);
-		List<ExceptionBean> exceptions = XmlUtil.getObjectsFromXmlObjects(Decode(exceptionstr), ExceptionBean.class, starttag);		
+		List<ExceptionBean> exceptions = XmlUtil.getObjectsFromXmlObjects(Decode(exceptionstr), ExceptionBean.class, starttag);
 		return exceptions;
 		}else{
 			return new ArrayList<ExceptionBean>();
